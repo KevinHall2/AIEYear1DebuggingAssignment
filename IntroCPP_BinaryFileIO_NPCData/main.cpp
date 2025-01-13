@@ -51,9 +51,11 @@ int main(int argc, char* argv[])
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
 
+        //moves the npc data page to the left by one. contains an edge case that keeps the page on the first one if the current page is already the first one
         if (IsKeyPressed(KEY_LEFT))
         {
             currentRecordIdx--;
+            //edge case for if the page is attempted to be moved left if the current page is already on the leftmost page
             if (currentRecordIdx < 0)
             {
                 currentRecordIdx = 0;
@@ -62,6 +64,7 @@ int main(int argc, char* argv[])
             recordTexture = LoadTextureFromImage(currentRecord->image);
         }
 
+        //moves the npc data page to the right by one
         if (IsKeyPressed(KEY_RIGHT))
         {
             currentRecordIdx++;
