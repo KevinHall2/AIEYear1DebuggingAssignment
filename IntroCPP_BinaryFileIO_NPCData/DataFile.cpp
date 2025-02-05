@@ -82,24 +82,36 @@ void DataFile::Load(string filename)
 		infile.read((char*)&nameSize, sizeof(int));
 		infile.read((char*)&ageSize, sizeof(int));
 
-		char* imgdata = new char[imageSize];
-		infile.read(imgdata, imageSize);
+		//if ()
+		//{
+		//  /*infile.seekg(nameSize, ios::beg);
+	 //   	infile.seekg(ageSize, ios::cur);
+	 //   	infile.seekg(imageSize, ios::cur);*/
 
-		Image img = LoadImageEx((Color*)imgdata, width, height);
-		char* name = new char[nameSize];
-		int age = 0;
-				
-		infile.read((char*)name, nameSize);
-		infile.read((char*)&age, ageSize);
+		//}
+		//else
+		//{
+		// char* imgdata = new char[imageSize];
+	 //    infile.read(imgdata, imageSize);
 
-		Record* r = new Record();
-		r->image = img;
-		r->name = string(name);
-		r->age = age;
-		records.push_back(r);
+	 // 	 Image img = LoadImageEx((Color*)imgdata, width, height);
+		// char* name = new char[nameSize];
+		// int age = 0;
+		//		
+		// infile.read((char*)name, nameSize);
+		// infile.read((char*)&age, ageSize);
 
-		delete [] imgdata;
-		delete [] name;
+		// Record* r = new Record();
+		// r->image = img;
+		// r->name = string(name);
+		// r->age = age;
+		// records.push_back(r);
+		// delete [] imgdata;
+		// delete [] name;
+
+		//}
+		
+
 	}
 
 	infile.close();
