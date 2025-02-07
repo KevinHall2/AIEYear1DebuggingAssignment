@@ -82,34 +82,34 @@ void DataFile::Load(string filename)
 		infile.read((char*)&nameSize, sizeof(int));
 		infile.read((char*)&ageSize, sizeof(int));
 
-		//if ()
-		//{
-		//  /*infile.seekg(nameSize, ios::beg);
-	 //   	infile.seekg(ageSize, ios::cur);
-	 //   	infile.seekg(imageSize, ios::cur);*/
+		if ()
+		{
+		  /*infile.seekg(nameSize, ios::cur);
+	    	infile.seekg(ageSize, ios::cur);
+	    	infile.seekg(imageSize, ios::cur);*/
 
-		//}
-		//else
-		//{
-		// char* imgdata = new char[imageSize];
-	 //    infile.read(imgdata, imageSize);
+		}
+		else
+		{
+		 char* imgdata = new char[imageSize];
+	     infile.read(imgdata, imageSize);
 
-	 // 	 Image img = LoadImageEx((Color*)imgdata, width, height);
-		// char* name = new char[nameSize];
-		// int age = 0;
-		//		
-		// infile.read((char*)name, nameSize);
-		// infile.read((char*)&age, ageSize);
+	  	 Image img = LoadImageEx((Color*)imgdata, width, height);
+		 char* name = new char[nameSize];
+		 int age = 0;
+				
+		 infile.read((char*)name, nameSize);
+		 infile.read((char*)&age, ageSize);
 
-		// Record* r = new Record();
-		// r->image = img;
-		// r->name = string(name);
-		// r->age = age;
-		// records.push_back(r);
-		// delete [] imgdata;
-		// delete [] name;
+		 Record* r = new Record();
+		 r->image = img;
+		 r->name = string(name);
+		 r->age = age;
+		 records.push_back(r);
+		 delete [] imgdata;
+		 delete [] name;
 
-		//}
+		}
 		
 
 	}
