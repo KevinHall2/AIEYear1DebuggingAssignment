@@ -74,7 +74,6 @@ DataFile::Record* DataFile::GetRecord(string filename, int index)
 	r->image = img;
 	r->name = string(name);
 	r->age = age;
-	//records.push_back(r);
 	delete[] imgdata;
 	delete[] name;
 
@@ -111,7 +110,7 @@ DataFile::Record* DataFile::GetRecord(string filename, int index)
 //	outfile.close();
 //}
 
-void DataFile::Load(string filename)
+DataFile::Record* DataFile::Load(string filename)
 {
 
 	ifstream infile(filename, ios::binary);
@@ -161,11 +160,10 @@ void DataFile::Load(string filename)
 	r->image = img;
 	r->name = string(name);
 	r->age = age;
-	//records.push_back(r);
 	delete [] imgdata;
 	delete [] name;
 
 	infile.close();
-	//return must return the record out
+	return r;
 }
 
