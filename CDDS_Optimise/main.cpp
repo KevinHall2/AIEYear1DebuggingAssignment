@@ -1,3 +1,4 @@
+
 /*******************************************************************************************
 *
 *   raylib [core] example - Basic window
@@ -24,6 +25,7 @@
 #include <random>
 #include <time.h>
 #include "Critter.h"
+#include "List.h"
 
 int main(int argc, char* argv[])
 {
@@ -31,6 +33,7 @@ int main(int argc, char* argv[])
     //--------------------------------------------------------------------------------------
     int screenWidth = 800;
     int screenHeight = 450;
+
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
@@ -58,6 +61,7 @@ int main(int argc, char* argv[])
             { (float)(5+rand() % (screenWidth-10)), (float)(5+(rand() % screenHeight-10)) },
             velocity,
             12, "res/10.png");
+        
     }
 
 
@@ -130,6 +134,7 @@ int main(int argc, char* argv[])
             {
                 critters[i].Destroy();
                 // this would be the perfect time to put the critter into an object pool
+
             }
         }
                 
