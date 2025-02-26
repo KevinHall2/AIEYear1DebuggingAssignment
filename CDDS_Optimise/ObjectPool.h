@@ -6,8 +6,10 @@
 template<typename T>
 class ObjectPool
 {
+	typedef T(*CreateItemSignature)();
+
 public:
-	ObjectPool();
+	ObjectPool(int size, CreateItemSignature createItemFunction);
 	~ObjectPool();
 
 	//removes anything in both the active and inactive lists
@@ -31,11 +33,21 @@ private:
 	List<T> m_inactiveList;
 	List<T> m_activeList;
 
+	CreateItemSignature m_createItemFunction;
 };
 
 template<typename T>
-inline ObjectPool<T>::ObjectPool()
+inline ObjectPool<T>::ObjectPool(int size, CreateItemSignature createItemFunction)
 {
+	m_createItemFunction = createItemFunction;
+	//initialize active and inactive lists or check if they are initialized
+	//also check if int size is a valid number
+
+	for (int i = 0; i < size; i++)
+	{
+		T item = createItemFunction();
+		//then add the newly made item to the inactive list
+	}
 }
 
 template<typename T>
@@ -51,7 +63,10 @@ inline void ObjectPool<T>::Clear()
 template<typename T>
 inline T ObjectPool<T>::Get()
 {
-	return T();
+	//if the object pool is empty, make a new item to put into the inactive list
+	//T item = m_createItemFunction();
+	//if the pool is not empty, get an item from the inactive list and put it into the active list
+	return item;
 }
 
 template<typename T>
