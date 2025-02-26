@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include "List.h"
+
 
 template<typename T>
 class ObjectPool
@@ -8,20 +10,26 @@ public:
 	ObjectPool();
 	~ObjectPool();
 
+	//removes anything in both the active and inactive lists
 	void Clear();
 
-
+	//takes out of the inactive list and places into active list
+	//returns the thing<T> that was just moved
 	T Get();
 
 	//determines if something was released back to the pool or not
-	bool Release();
+	//opposite of Get(), moves from the active list to the inactive list
+	//returns the thing<T> that was just moved
+	//also checks if something is already in the inactive list, and if it is, doesn't add it in again
+	bool Release(T value);
 
 
 	int getActiveCount();
 	int getInactiveCount();
 
 private:
-	int m_count;
+	List<T> m_inactiveList;
+	List<T> m_activeList;
 
 };
 
@@ -47,7 +55,7 @@ inline T ObjectPool<T>::Get()
 }
 
 template<typename T>
-inline bool ObjectPool<T>::Release()
+inline bool ObjectPool<T>::Release(T value)
 {
 	return false;
 }
@@ -55,11 +63,13 @@ inline bool ObjectPool<T>::Release()
 template<typename T>
 inline int ObjectPool<T>::getActiveCount()
 {
-	return 0;
+	//returns the length of the active list
+	return m_activeList.getLength();
 }
 
 template<typename T>
 inline int ObjectPool<T>::getInactiveCount()
 {
-	return 0;
+	//returns the length of the inactive list
+	return m_inactiveList.getLength();
 }
