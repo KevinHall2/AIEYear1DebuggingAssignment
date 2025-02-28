@@ -40,20 +40,16 @@ template<typename T>
 inline ObjectPool<T>::ObjectPool(int size, CreateItemSignature createItemFunction)
 {
 	m_createItemFunction = createItemFunction;
-	//initialize active and inactive lists or check if they are initialized
-	if (!m_inactiveList)
-		private List<T> m_inactiveList;
-	if (!m_activeList)
-		private List<T> m_activeList;
-	//also check if int size is a valid number
+     
+	//check if int size is a valid number
 	if (size <= 0)
-		return null;
+		return;
 
 	for (int i = 0; i < size; i++)
 	{
 		T item = createItemFunction();
 		//then add the newly made item to the inactive list
-		m_inactveList.pushFront(item);
+		m_inactiveList.pushFront(item);
 	}
 }
 
