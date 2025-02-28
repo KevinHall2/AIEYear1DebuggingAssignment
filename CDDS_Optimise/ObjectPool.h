@@ -68,16 +68,18 @@ inline void ObjectPool<T>::Clear()
 template<typename T>
 inline T ObjectPool<T>::Get()
 {
+	T item;
+
 	//if the object pool is empty, make a new item to put into the inactive list
 	if (getInactiveCount() <= 0)
 	{
-	  T item = m_createItemFunction();
+	  item = m_createItemFunction();
 	  m_inactiveList.pushFront(item);
 	}
 	//if the pool is not empty, get an item from the inactive list and put it into the active list
 	else
 	{
-		T item = m_inactiveList.begin();
+		item = m_inactiveList.first();
 		m_activeList.pushFront(item);
 		m_inactiveList.popFront();
 	}
@@ -87,11 +89,15 @@ inline T ObjectPool<T>::Get()
 template<typename T>
 inline bool ObjectPool<T>::Release(T value)
 {
-	if (m_inactiveList.find(value))
-		break;
+	T item;
+
+	if (m_inactiveList.find(*value))
+	{
+		return nullptr;
+	}
 	else
 	{
-		T item = m_activeList.find(value);
+		item = m_activeList.find(*value);
 		m_inactiveList.pushFront(item);
 		m_activeList.remove(item);
 	}
