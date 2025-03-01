@@ -8,9 +8,13 @@ This program reads from and writes out information from a binary file that is in
 binary data file. The Escape key can also be used to close the program instead of having to click out of the window. To gain access to the program, download the .zip file found at https://github.com/KevinHall2/AIEYear1DebuggingAssignment/releases and extract its contents
 to a folder of your choice. Then open the .exe file to run the program.
 
-
+##Changelog v1.1
 The program of the Optimization release (v1.1) displays multiple sprites that collide with each other and a destroyer sprite that removes 
 and then replaces the other sprites in a different direction. It has been optimized using a linked list and an object pool to facilitate a
 better framerate than what the project originally was running at. To gain access to the program, download the .zip file found at 
 https://github.com/KevinHall2/AIEYear1DebuggingAssignment/releases for release 1.1 and extract its contents to a folder of your choice.
 Then open the .exe file to run the program.
+
+
+##Changelog v1.2
+This update of the Optimization release (v1.2) has an added in object pool to help with the linked lists in optimizing the program. It additionally has a unit test project that tests the functions of the object pool.
